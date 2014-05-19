@@ -1,0 +1,51 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PamJs -- Pictures/Audios/Movies Operation for Humans</title>
+        <link rel=stylesheet type=text/css href="{% static 'pamjs/css/pam.css' %}">
+        <link rel=stylesheet type=text/css href="{% static 'pamjs/css/pamDemo.css' %}">
+        <script type="text/javascript" src="{% static 'pamjs/js/pam.js' %}"></script>
+    </head>
+
+    <body>
+        <div class="Div">
+            <div class="wapper">
+                <center>
+                    <div>
+                        <h1><a href="{% url 'home' %}" class="pamFont">欢迎使用pam.js</a></h1>
+                        <h3><span class="pamFont">PamJs -- Pictures/Audios/Movies Operation for Humans</span></h3>
+                    </div>
+
+                    {% block content %}{% endblock %}
+
+                    <div>
+                        <table cellpadding="0" cellspacing="5" border="0" width="100%">
+                            <tbody>
+                                <tr>
+                                    <td width="33%" class="cell hvcenter" onclick="location.href={% url 'pam:pic' %}"><a href="{% url 'pam:pic' %}" class="pamFont"> 背景图片(Pictures) </a></td>
+                                    <td width="33%" class="cell hvcenter" onclick="location.href={% url 'pam:aud' %}"><a href="{% url 'pam:aud' %}" class="pamFont"> 背景音乐(Audios) </a></td>
+                                    <td width="*%" class="cell hvcenter" onclick="location.href={% url 'pam:mov' %}"><a href="{% url 'pam:mov' %}" class="pamFont"> 背景视频(Movies) </a></td>
+                                </tr>
+                                <tr>
+                                    <td class="cell hvcenter"><a href="javascript:void(0)" class="pamFont"> 浮层展示(FloatLayer) </a></td>
+                                    <td class="cell hvcenter"><a href="javascript:void(0)" class="pamFont"> 轮播图(Lunbotu) </a></td>
+                                    <td class="cell hvcenter"><a href="javascript:void(0)" class="pamFont"> 即将开放(Coming Soon) </a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div>
+                        <img id="fler" src="{% static 'pamjs/images/13Y4K9Lkrd9rCxHnF8b3axUKbjtA3ZWF1d.png' %}" alt="" class="img img-well img-polaroid img-hover" onclick="javascript:showid('floatLayer', document.getElementById('fler').src, '比特币捐助钱包');">
+                    </div>
+                    <div id="floatLayer" class="floatLayer" style="display:none;"></div>
+                </center>
+            </div>
+        </div>
+
+        {% block script %}{% endblock %}
+    </body>
+</html>

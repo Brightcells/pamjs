@@ -1,0 +1,9 @@
+Django==1.6
+ipdb==0.8
+ipython==2.0.0
+MySQL-python==1.2.5
+pytz==2014.1
+PIL==1.1.7
+requests==2.3.0
+South==0.8.4
+xpinyin==0.5.0

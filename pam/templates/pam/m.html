@@ -1,0 +1,12 @@
+{% extends "base/pamjs_base.html" %}
+{% load staticfiles %}
+
+{% block content %}{% endblock %}
+
+{% block script %}
+    <script>
+        var res = [ "/static/pamjs/movies/movie" ];
+        _movie(0, res);
+        // _movie(1, 1);
+    </script>
+{% endblock %}

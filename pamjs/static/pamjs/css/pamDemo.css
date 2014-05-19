@@ -1,0 +1,137 @@
+/** 
+ * @fileOverview pamDemo.css is used to Demo of pam.js 
+ * @author HQM
+ * @date 2013/06/27
+ * @e-mail qiminis0801@gmail.com
+ * @github https://github.com/HQMIS
+ * @version 0.0.1 
+ */
+ 
+ /* 
+  * whole page's wapper
+  * define width and set auto center 
+  */
+.wapper {
+    margin: 0 auto;
+    width: 1024px;
+}
+
+.leftPosition {
+    text-align: left;
+}
+
+.centerPosition {
+    text-align: center;
+}
+
+.rightPosition {
+    text-align: right;
+}
+
+/* 
+ * Alignment of table content
+ * .hvcenter - 水平/垂直 居中
+ * .hcenter - 水平居中
+ * .vcenter - 垂直居中
+ */
+.hvcenter {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.hcenter {
+    text-align: center;
+}
+
+.vcenter {
+    vertical-align: middle;
+}
+
+.pamFont {
+    font-family: 楷体_GB2312;
+    color: red;
+}
+
+a:link, a:visited {
+    text-decoration: none; /*超链接无下划线*/
+}
+
+a:hover {
+    text-decoration: underline; /*鼠标放上去有下划线*/
+}
+
+.cell {
+    height: 110px;
+    background: #fff;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 22px;
+    line-height: 180%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.cell-div {
+    width: 992px;
+    background: #fff;
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 22px;
+    line-height: 180%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.cell-pic {
+    width: 285px;
+    height: 110px;
+    background: #fff;
+    border: 1px solid black;
+    padding: 10px;
+    font-size: 22px;
+    line-height: 180%;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    opacity: 0.8;
+}
+
+.cell:hover, .cell-div:hover {
+    background: rgb(199, 237, 204); /* #C7EDCC 绿豆沙色 */
+    border: 1px solid #f77a00;
+    box-shadow: 0px 0px 5px #f77a00;
+    -webkit-box-shadow: 0px 0px 5px #f77a00;
+    -moz-box-shadow: 0px 0px 5px #f77a00;
+    cursor: pointer;
+}
+
+.form-control {
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    box-shadow: 0pt 1px 2px rgba(0, 0, 0, 0.18) inset;
+    width: 310px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti !important;
+}
+
+.btn-control {
+    width: 110px;
+    height: 36px;
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    box-shadow: 0pt 1px 2px rgba(0, 0, 0, 0.18) inset;
+}

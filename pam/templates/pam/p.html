@@ -1,0 +1,107 @@
+{% extends "base/pamjs_base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div>
+        <table cellpadding="0" cellspacing="5" border="0" width="100%">
+            <tbody>
+                <tr>
+                    <td class="cell leftPosition">
+                        <span class="pamFont">
+                            使用Local图片，直接调用_bg，参数1为本地的标识(0-Local，1-Server)，参数2为存放本地图片路径的数组，参数3为图片替换的间隔时间，单位：ms(如果参数2数组长度为1，则参数3随意，pam.js中不检查)
+                        </span>
+                        <div>
+                            <code> </code>
+                        </div>
+                        <div>
+                            <code>var res = ["images/xjqxz5.jpg", "images/gif.gif"];</code>
+                        </div>
+                        <div>
+                            <code>_bg(0, res, 10000);</code>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell leftPosition">
+                        <span class="pamFont">
+                            使用Server图片，直接调用_bg，参数1为Server的标识(0-Local，1-Server)，参数2为单播还是组播的标识(0-单，1-组)，参数3为图片替换的间隔时间，单位：ms(如果参数2为0，则参数2随意，pam.js中不检查)
+                        </span>
+                        <div>
+                            <code>_bg(1, 1, 10000);</code>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="cell-div">
+        <form class="form-horizontal" method="post" action="{% url 'pam:pic' %}" enctype='multipart/form-data'>{% csrf_token %}
+
+            <div>
+                {% for err in form.non_field_errors %}
+                    {{ err }}
+                {% endfor %}
+            </div>
+
+            <table cellpadding="5" cellspacing="0" border="0" width="50%">
+                <tbody>
+                    <tr>
+                        <td width="120" align="right">背景图片</td>
+                        <td width="auto" align="left">{{ form.image }}</td>
+                    </tr>
+                    <tr>
+                        <td width="120" align="right">图片链接</td>
+                        <td width="auto" align="left">{{ form.url }}</td>
+                    </tr>
+                    <tr>
+                        <td width="120" align="right">图片描述</td>
+                        <td width="auto" align="left">{{ form.info }}</td>
+                    </tr>
+                    <tr>
+                        <td width="120" align="right">跳转链接</td>
+                        <td width="auto" align="left">{{ form.link }}</td>
+                    </tr>
+                    <tr>
+                        <td width="120" align="right">所属分类</td>
+                        <td width="auto" align="left">{{ form.classify }}</td>
+                    </tr>
+                    <tr>
+                        <td width="120" align="right"></td>
+                        <td width="auto" align="left"><button type="submit" class="btn btn-control">上传</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </form>
+    </div>
+
+    <div class="cell-div">
+        <table cellpadding="0" cellspacing="5" border="0" width="100%">
+            <tbody>
+                <tr>
+                    {% for p in pics %}
+                        <td class="cell-pic hvcenter"><a href="javascript:void(0)" class="pamFont"> <img src="{{ p.image }}" class="cell-pic hvcenter"></a></td>
+                        {% if forloop.counter|divisibleby:3 %}</tr><tr>{% endif %}
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+        // one method
+        // var path = "http://121.199.46.162/work/pam/background/";
+        // var ymd = new Date().pattern("yyyy-MM-dd");
+        // var res = [ path + "background-" + ymd + ".jpg" ];
+
+        var res = [
+            {"image": "/static/pamjs/images/xjqxz5.jpg", "info": "仙剑奇侠传 五", "link": "http://pal5.baiyou100.com/1701000.asp"},
+            {"image": "/static/pamjs/images/yz.jpg", "info": "乌尤尼盐湖", "link": "http://baike.baidu.com/view/185098.htm"},
+        ]
+        // _bg(0, res, 10000);
+        _bg(1, 1, 10000);
+    </script>
+{% endblock %}
