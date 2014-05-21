@@ -15,7 +15,9 @@ var img_index = 0, // the index of the picList
     global_bg_time = 0, // global backgroud interval time
     global_bg_res = [], // global backgroud res
     pic_jsonp_url = "http://pamjs.com/api/pic/?num=%1&callback=pamjs&cache=true",
-    daily_pic_jsonp_url = "http://pamjs.com/api/daily_pic/?num=%1&callback=pamjs";
+    daily_pic_jsonp_url = "http://pamjs.com/api/daily_pic/?num=%1&callback=pamjs",
+    ctrl = true,  // 是否显示控制按钮
+    display = false; // Div 内内容是否显示
 
 /**
  * ########## ########## ########## ########## ########## ########## ##########
@@ -709,4 +711,38 @@ function showid(idDiv, imgPath, imgName) {
             sel[i].style.visibility = "visible";
         }
     };
+}
+
+/**
+ * ########## ########## ########## ########## ########## ########## ##########
+ * ########## ########## ########## ########## ########## ########## ##########
+ *
+ * the function below is for window.onload
+ *
+ * ########## ########## ########## ########## ########## ########## ##########
+ * ########## ########## ########## ########## ########## ########## ##########
+ */
+window.onload = function () {
+    if(ctrl) {
+        var _conDiv = document.getElementById("Div"),
+            _ctrlSpan = document.createElement("span");
+        _ctrlSpan.id = "ctrlSpan";
+        _ctrlSpan.className = "ctrlSpan";
+        if(display){
+            _conDiv.style.display = "";
+            _ctrlSpan.innerHTML = "隐藏";
+        } else {
+            _conDiv.style.display = "none";
+            _ctrlSpan.innerHTML = "显示";
+        }
+        var object = document.body.appendChild(_ctrlSpan);
+
+        _ctrlSpan.addEventListener("click", function() {
+            if("" == _conDiv.style.display) {
+                _conDiv.style.display = "none";
+            } else {
+                _conDiv.style.display = "";
+            }
+        }, false);
+    }
 }

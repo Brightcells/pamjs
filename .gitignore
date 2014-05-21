@@ -1,4 +1,6 @@
 *.pyc
 *.db
 *.swp
+*.sqlite3
 *media*
+settings.py
