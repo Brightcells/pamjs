@@ -14,7 +14,7 @@ var img_index = 0, // the index of the picList
     slide_image_num = 5, // number of side image from server
     global_bg_time = 0, // global backgroud interval time
     global_bg_res = [], // global backgroud res
-    pic_jsonp_url = "http://pamjs.com/api/pic/?num=%1&callback=pamjs&cache=true",
+    pic_jsonp_url = "http://pamjs.com/api/pic/?num=%1&callback=pamjs&cache=true&device=C&classify=rx",
     daily_pic_jsonp_url = "http://pamjs.com/api/daily_pic/?num=%1&callback=pamjs",
     ctrl = true,  // 是否显示控制按钮
     display = false; // Div 内内容是否显示

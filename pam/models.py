@@ -25,6 +25,7 @@ def upload_path(instance, old_filename):
 
 class ClassifyInfo(CreateUpdateMixin):
     classify = models.CharField(_('classify'), max_length=255, blank=True, null=True, help_text=u'资源分类')
+    abbr = models.CharField(_('abbreviation'), max_length=255, blank=True, null=True, help_text=u'资源分类简称')
     status = models.BooleanField(_('status'), default=True, help_text=u'分类是否显示')
     priority = models.IntegerField(_('priority'), blank=True, null=True, help_text=u'分类展示的优先级')
 
@@ -42,6 +43,7 @@ class PictureInfo(CreateUpdateMixin):
     info = models.TextField(_('info'), blank=True, null=True, help_text=u'图片描述信息')
     link = models.URLField(_('link'), blank=True, null=True, help_text=u'图片查看详情链接')
     md5 = models.CharField(_('md5'), max_length=255, blank=True, null=True, help_text=u'图片 hash 值')
+    device = models.CharField(_('device'), max_length=255, blank=True, null=True, choices=settings.DEVICE_TYPE, help_text=u'图片适合的设备')
     classify = models.ForeignKey('ClassifyInfo', related_name='pic_classify', blank=True, null=True, help_text=u'图片所属分类')
     status = models.BooleanField(_('status'), default=True, help_text=u'图片是否显示')
     priority = models.IntegerField(_('priority'), blank=True, null=True, help_text=u'图片展示的优先级')

@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 from django import forms
-from django.forms import ModelForm, ModelChoiceField
+from django.conf import settings
+from django.forms import ModelForm, ChoiceField, ModelChoiceField
 from django.forms.widgets import Textarea, ClearableFileInput, URLInput, Select
 from django.utils.translation import ugettext_lazy as _
 
@@ -44,6 +45,12 @@ class PictureInfoModelForm(ModelForm):
     classify = ClassifyModelChoiceField(
         queryset=ClassifyInfo.objects.filter(status=True),
         widget=Select(attrs={'class': 'form-control', 'autocomplete': 'off', 'placeholder': _('classify')}),
+        required=False
+    )
+
+    device = ChoiceField(
+        choices=settings.DEVICE_TYPE,
+        widget=Select(attrs={'class': 'form-control', 'autocomplete': 'off', 'placeholder': _('device')}),
         required=False
     )
 

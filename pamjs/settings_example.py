@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
     'pamjs',
     'pam',
     'api'
@@ -113,3 +114,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 MEDIA_URL = '/media/'
 
 DOMAIN = 'http://192.168.17.43:9090'
+DEVICE_TYPE = (
+    ('C', 'Computer'),
+    ('T', 'Tablet'),
+    ('M', 'Mobile'),
+)

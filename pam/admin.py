@@ -3,11 +3,11 @@ from pam.models import ClassifyInfo, PictureInfo, CacheInfo
 
 
 class ClassifyInfoAdmin(admin.ModelAdmin):
-    list_display = ('classify', 'status', 'priority')
+    list_display = ('classify', 'abbr', 'status', 'priority')
 
 
 class PictureInfoAdmin(admin.ModelAdmin):
-    list_display = ('image', 'url', 'info', 'link', 'md5', 'classify', 'status', 'priority')
+    list_display = ('image', 'url', 'info', 'link', 'md5', 'device', 'classify', 'status', 'priority')
 
 
 class CacheInfoAdmin(admin.ModelAdmin):
