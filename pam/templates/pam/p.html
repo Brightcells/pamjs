@@ -96,16 +96,18 @@
 
 {% block script %}
     <script>
-        // one method
-        // var path = "http://121.199.46.162/work/pam/background/";
-        // var ymd = new Date().pattern("yyyy-MM-dd");
-        // var res = [ path + "background-" + ymd + ".jpg" ];
+        (function () {
+            /*one method
+            var path = "http://121.199.46.162/work/pam/background/";
+            var ymd = new Date().pattern("yyyy-MM-dd");
+            var res = [ path + "background-" + ymd + ".jpg" ];*/
 
-        var res = [
-            {"image": "/static/pamjs/images/xjqxz5.jpg", "info": "仙剑奇侠传 五", "link": "http://pal5.baiyou100.com/1701000.asp"},
-            {"image": "/static/pamjs/images/yz.jpg", "info": "乌尤尼盐湖", "link": "http://baike.baidu.com/view/185098.htm"},
-        ]
-        // _bg(0, res, 10000);
-        _bg(1, 1, 10000);
+            /*var newConfig = $.extend(config, {
+                display: true;
+            })*/
+
+            init({display: true, slide_image_classify: 'dw'})
+            _bg(1, 1, 10000);
+        })();
     </script>
 {% endblock %}

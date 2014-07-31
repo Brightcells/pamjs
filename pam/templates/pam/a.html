@@ -5,11 +5,13 @@
 
 {% block script %}
     <script>
-        var res = [
-            "/static/pamjs/musics/qg",
-            "/static/pamjs/musics/snq"
-        ];
-        _audio(0, res);
-        // _audio(1, 1);
+        (function () {
+            var res = [
+                "/static/pamjs/musics/qg",
+                "/static/pamjs/musics/snq"
+            ];
+            _audio(0, res);
+            // _audio(1, 1);
+        })();
     </script>
 {% endblock %}
