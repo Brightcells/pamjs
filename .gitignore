@@ -3,4 +3,4 @@
 *.swp
 *.sqlite3
 *media*
-settings.py
+local_settings.py
