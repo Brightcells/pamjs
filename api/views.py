@@ -33,6 +33,7 @@ def pic(request):
         hr, created = CacheInfo.objects.get_or_create(
             site=site,
             usr=usr,
+            device=device,
             ip_addr=ip_addr,
             cache_at=cache_at,
             defaults={'http_response': get_pic_httpresponse(callback, num, device, classify)}
