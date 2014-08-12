@@ -14,7 +14,7 @@ var config = {
     site: '',
     usr: '',
 
-    cache： 'true',
+    cache: 'true',
     device: 'C',
 
     img_index: 0, // the index of the picList
@@ -29,7 +29,8 @@ var config = {
     daily_pic_jsonp_url: "http://pamjs.com/api/daily_pic/?site=%1&usr=%2&num=%3&callback=pamjs&cache=%4&device=%5&classify=%6",
 
     ctrl: true,  // 是否显示控制按钮
-    display: false  // Div 内内容是否显示
+    con_div: 'Div',  // 控制按钮控制区域
+    display: false  // 控制区域内内容是否显示
 }
 
 /**
@@ -751,11 +752,11 @@ function showid(idDiv, imgPath, imgName) {
  */
 window.onload = function () {
     if(config.ctrl) {
-        var _conDiv = document.getElementById("Div"),
+        var _conDiv = document.getElementById(config.con_div),
             _ctrlSpan = document.createElement("span");
         _ctrlSpan.id = "ctrlSpan";
         _ctrlSpan.className = "ctrlSpan";
-        if(config.display){
+        if(config.display && _conDiv){
             _conDiv.style.display = "";
             _ctrlSpan.innerHTML = "隐藏";
         } else {
@@ -767,8 +768,10 @@ window.onload = function () {
         _ctrlSpan.addEventListener("click", function() {
             if("" == _conDiv.style.display) {
                 _conDiv.style.display = "none";
+                _ctrlSpan.innerHTML = "显示";
             } else {
                 _conDiv.style.display = "";
+                _ctrlSpan.innerHTML = "隐藏";
             }
         }, false);
     }

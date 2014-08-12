@@ -11,7 +11,7 @@ class PictureInfoAdmin(admin.ModelAdmin):
 
 
 class CacheInfoAdmin(admin.ModelAdmin):
-    list_display = ('http_response', 'site', 'usr', 'cache_at', 'ip_addr')
+    list_display = ('http_response', 'site', 'usr', 'device', 'cache_at', 'ip_addr')
 
 
 admin.site.register(ClassifyInfo, ClassifyInfoAdmin)
