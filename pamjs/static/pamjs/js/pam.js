@@ -309,7 +309,9 @@ function setBackground(_bg_res) {
         }
     } else {
         var _infoDiv = document.getElementById("infoDiv");
-        _infoDiv.parentNode.removeChild(_infoDiv);
+        if(_infoDiv) {
+            _infoDiv.parentNode.removeChild(_infoDiv);
+        }
     }
 }
 
