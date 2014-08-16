@@ -277,7 +277,12 @@ function setBackground(_bg_res) {
     }
 
     //alert(_bg_info);
-    if (undefined != _bg_info && '' != _bg_info) {
+    if (undefined == _bg_info || '' == _bg_info) {
+        var _infoDiv = document.getElementById("infoDiv");
+        if(_infoDiv) {
+            _infoDiv.parentNode.removeChild(_infoDiv);
+        }
+    } else {
         /* Judge whether the info tag whose id is _bgInfo exists or not */
         var _infoDiv = document.getElementById("infoDiv");
         if (_infoDiv) {
@@ -306,11 +311,6 @@ function setBackground(_bg_res) {
             }
             _aInfo.innerHTML = _bg_info;
             var object = _infoDiv.appendChild(_aInfo);
-        }
-    } else {
-        var _infoDiv = document.getElementById("infoDiv");
-        if(_infoDiv) {
-            _infoDiv.parentNode.removeChild(_infoDiv);
         }
     }
 }
