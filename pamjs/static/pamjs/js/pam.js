@@ -151,13 +151,22 @@ String.format = function(str) {
  * ########## ########## ########## ########## ########## ########## ##########
  * ########## ########## ########## ########## ########## ########## ##########
  */
-var pamjs = function(data) {
+function setOneOrMore(data) {
     config.global_bg_res = data[0];
     if (1 == config.global_bg_res.length) {
         setBackground(config.global_bg_res[0]);
     } else {
         timeId = window.setInterval("slideSetBackground(config.global_bg_res)", config.global_bg_time);
         slideSetBackground(config.global_bg_res);
+    }
+}
+
+var pamjs = function(data) {
+    setOneOrMore(data);
+
+    if (window.localStorage) {
+        localStorage.clear();
+        localStorage.setItem(new Date().pattern("yyyy-MM-dd"),JSON.stringify(data));
     }
 };
 
@@ -205,15 +214,19 @@ function _bg(_bg_mode, _bg_res, _bg_time) {
      * equals 0, we should use diy picture
      */
     if (1 == _bg_mode) {
-        if (1 == _bg_res) { // order to set picture on server in the list as background
-            config.global_bg_time = _bg_time;
-            /* set a timer, to set background every interval time */
-            getRemoteInfo(config.pic_jsonp_url, config.site, config.usr, config.slide_image_num, config.cache, config.device, config.slide_image_classify);
-        } else if(-1 == _bg_res) {
-            getRemoteInfo(config.dailypic_jsonp_url, config.site, config.usr, config.slide_image_num, config.cache, config.device, config.slide_image_classify);
-        }else { // set one random picture as background
-            config.global_bg_time = _bg_time;
-            getRemoteInfo(config.pic_jsonp_url, config.site, config.usr, 1, config.cache, config.device, config.slide_image_classify);
+        if (window.localStorage && (new Date().pattern("yyyy-MM-dd") in localStorage)) {
+            setOneOrMore(JSON.parse(localStorage.getItem(new Date().pattern("yyyy-MM-dd"))));
+        } else {
+            if (1 == _bg_res) { // order to set picture on server in the list as background
+                config.global_bg_time = _bg_time;
+                /* set a timer, to set background every interval time */
+                getRemoteInfo(config.pic_jsonp_url, config.site, config.usr, config.slide_image_num, config.cache, config.device, config.slide_image_classify);
+            } else if(-1 == _bg_res) {
+                getRemoteInfo(config.dailypic_jsonp_url, config.site, config.usr, config.slide_image_num, config.cache, config.device, config.slide_image_classify);
+            }else { // set one random picture as background
+                config.global_bg_time = _bg_time;
+                getRemoteInfo(config.pic_jsonp_url, config.site, config.usr, 1, config.cache, config.device, config.slide_image_classify);
+            }
         }
     } else {
         if (1 == _bg_res.length) {
