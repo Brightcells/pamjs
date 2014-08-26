@@ -197,7 +197,7 @@ var pamjs = function(data) {
                 localStorage.removeItem(key);
             }
         }
-        localStorage.setItem(String.format("%1_%2_%3", config.site, config.usr, ymd), JSON.stringify(data));
+        localStorage.setItem(String.format("%1_%2_%3_%4", config.site, config.usr, config.slide_image_classify, ymd), JSON.stringify(data));
     }
 };
 
@@ -246,7 +246,7 @@ function _bg(_bg_mode, _bg_res, _bg_time) {
      */
     if (1 == _bg_mode) {
         if (window.localStorage && (new Date().pattern("yyyy-MM-dd") in localStorage)) {
-            setOneOrMore(JSON.parse(localStorage.getItem(String.format("%1_%2_%3", config.site, config.usr, new Date().pattern("yyyy-MM-dd")))));
+            setOneOrMore(JSON.parse(localStorage.getItem(String.format("%1_%2_%3_%4", config.site, config.usr, config.slide_image_classify, new Date().pattern("yyyy-MM-dd")))));
         } else {
             if (1 == _bg_res) { // order to set picture on server in the list as background
                 config.global_bg_time = _bg_time;

@@ -34,6 +34,7 @@ def pic(request):
             site=site,
             usr=usr,
             device=device,
+            classify=classify,
             ip_addr=ip_addr,
             cache_at=cache_at,
             defaults={'http_response': get_pic_httpresponse(callback, num, device, classify)}

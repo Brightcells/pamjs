@@ -71,6 +71,7 @@ class CacheInfo(CreateUpdateMixin):
     site = models.CharField(_('site'), max_length=255, blank=True, null=True, help_text=u'缓存站点')
     usr = models.CharField(_('usr'), max_length=255, blank=True, null=True, help_text=u'缓存用户')
     device = models.CharField(_('device'), max_length=255, blank=True, null=True, help_text=u'缓存设备')
+    classify = models.CharField(_('classify'), max_length=255, blank=True, null=True, help_text=u'图片所属分类')
     cache_at = models.CharField(_('cache_at'), max_length=255, blank=True, null=True, help_text=u'缓存时间，精确到年月日')
     ip_addr = models.CharField(_('ip_addr'), max_length=255, blank=True, null=True, help_text=u'缓存 IP')
 
