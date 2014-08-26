@@ -1,3 +1,26 @@
+//
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/'---'\___
+//                 .' \\|       |// '.
+//                / \\|||   :   |||// \
+//               / _|||||  -:-  |||||_ \
+//              |   |  \\\  -  ///  |   |
+//              | \_|   ''\---/''   |_/ |
+//              \  .-\__   '-'   __/-.  /
+//            ___'. .'   /--.--\   '. .'___
+//         ."" '<  `.____\_<|>_/____.`  >' "".
+//        | | :   `- \`.;`\ _ /`;.`\ -`   : | |
+//        \  \ `_.    \_ __\ /__ _/    ._` /  /
+//    =====`-.___ `.____ \_____/ ____.` ___.-'=====
+//                       `=---='
+//  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//          佛祖保佑       HQM        永无BUG
+//
+
 /**
  * @fileOverview pam.js which to simply deal with picture\audio\movie
  * @author HQM
@@ -165,8 +188,16 @@ var pamjs = function(data) {
     setOneOrMore(data);
 
     if (window.localStorage) {
-        localStorage.clear();
-        localStorage.setItem(new Date().pattern("yyyy-MM-dd"),JSON.stringify(data));
+        var ymd = new Date().pattern("yyyy-MM-dd");
+        for(var i=0; i<localStorage.length; i++) {
+            var key = localStorage.key(0);
+            if (key.indexOf(ymd) >= 0) {
+
+            } else {
+                localStorage.removeItem(key);
+            }
+        }
+        localStorage.setItem(String.format("%1_%2_%3", config.site, config.usr, ymd), JSON.stringify(data));
     }
 };
 
@@ -215,7 +246,7 @@ function _bg(_bg_mode, _bg_res, _bg_time) {
      */
     if (1 == _bg_mode) {
         if (window.localStorage && (new Date().pattern("yyyy-MM-dd") in localStorage)) {
-            setOneOrMore(JSON.parse(localStorage.getItem(new Date().pattern("yyyy-MM-dd"))));
+            setOneOrMore(JSON.parse(localStorage.getItem(String.format("%1_%2_%3", config.site, config.usr, new Date().pattern("yyyy-MM-dd")))));
         } else {
             if (1 == _bg_res) { // order to set picture on server in the list as background
                 config.global_bg_time = _bg_time;
