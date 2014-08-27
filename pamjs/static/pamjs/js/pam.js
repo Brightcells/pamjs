@@ -245,8 +245,9 @@ function _bg(_bg_mode, _bg_res, _bg_time) {
      * equals 0, we should use diy picture
      */
     if (1 == _bg_mode) {
-        if (window.localStorage && (new Date().pattern("yyyy-MM-dd") in localStorage)) {
-            setOneOrMore(JSON.parse(localStorage.getItem(String.format("%1_%2_%3_%4", config.site, config.usr, config.slide_image_classify, new Date().pattern("yyyy-MM-dd")))));
+        var storeage_key = String.format("%1_%2_%3_%4", config.site, config.usr, config.slide_image_classify, new Date().pattern("yyyy-MM-dd"));
+        if (window.localStorage && (storeage_key in localStorage)) {
+            setOneOrMore(JSON.parse(localStorage.getItem(storeage_key)));
         } else {
             if (1 == _bg_res) { // order to set picture on server in the list as background
                 config.global_bg_time = _bg_time;
