@@ -19,6 +19,8 @@ def get_pic_httpresponse(callback, num, device, classify):
 
 
 def pic(request):
+    site = request.GET.get('site', '')
+    usr = request.GET.get('usr', '')
     num = int(request.GET.get('num', '5'))
     callback = request.GET.get('callback', '')
     cache = request.GET.get('cache', 'true')
@@ -28,7 +30,13 @@ def pic(request):
     if cache == 'true':
         ip_addr = request.META['HTTP_X_FORWARDED_FOR'] if 'HTTP_X_FORWARDED_FOR' in request.META else request.META['REMOTE_ADDR']
         cache_at = datetime.today().strftime('%Y-%m-%d')
-        hr, created = CacheInfo.objects.get_or_create(ip_addr=ip_addr, cache_at=cache_at, defaults={'http_response': get_pic_httpresponse(callback, num, device, classify)})
+        hr, created = CacheInfo.objects.get_or_create(
+            site=site,
+            usr=usr,
+            ip_addr=ip_addr,
+            cache_at=cache_at,
+            defaults={'http_response': get_pic_httpresponse(callback, num, device, classify)}
+        )
         httpresponse = hr.http_response
     else:
         httpresponse = get_pic_httpresponse(callback, num, device, classify)
