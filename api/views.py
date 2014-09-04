@@ -15,7 +15,8 @@ def get_pic_httpresponse(callback, num, device, classify):
         pass
     pic_queryset = random.sample(pic_queryset, num) if pic_queryset.count() > num else pic_queryset
     pic_list = [pic.data for pic in pic_queryset]
-    return callback + '([' + str(json.dumps(pic_list)) + '])'
+
+    return str(json.dumps(pic_list)) if callback == '' else callback + '([' + str(json.dumps(pic_list)) + '])'
 
 
 def pic(request):
