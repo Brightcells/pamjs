@@ -8,6 +8,8 @@ class ClassifyInfoAdmin(admin.ModelAdmin):
 
 class PictureInfoAdmin(admin.ModelAdmin):
     list_display = ('image', 'url', 'info', 'link', 'md5', 'device', 'classify', 'status', 'priority')
+    search_fields = ('info', )
+    list_filter = ('device', 'classify', 'status', 'priority')
 
 
 class CacheInfoAdmin(admin.ModelAdmin):
