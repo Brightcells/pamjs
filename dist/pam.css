@@ -121,7 +121,7 @@ div.bgDiv>img {
     left: 0px;
     bottom: 0px;
     right: 0px;
-    z-index: 0;
+    z-index: 999998;
     padding: 5px;
     text-align: center;
     color: #fff;
@@ -165,7 +165,7 @@ div.bgDiv>img {
     height: 18px;
     text-align: center;
     border-radius: 6px;
-    z-index: 88;
+    z-index: 999999;
     margin: 8px;
     padding: 5px;
     background: #CCEEFF;
