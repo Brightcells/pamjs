@@ -34,6 +34,8 @@
     /**
      * Global Variable
      */
+    var version = '2.0.0';
+
     var config = {
         site: '',
         usr: '',
@@ -180,7 +182,8 @@
         if (1 == config.global_bg_res.length) {
             setBackground(config.global_bg_res[0]);
         } else {
-            timeId = window.setInterval("slideSetBackground(config.global_bg_res)", config.global_bg_time);
+            // window.setInterval to call PamJS.function
+            timeId = window.setInterval("PamJS.slideSetBackground(PamJS.config.global_bg_res)", PamJS.config.global_bg_time);
             slideSetBackground(config.global_bg_res);
         }
     }
@@ -271,7 +274,8 @@
             } else {
                 config.global_bg_res = _bg_res;
                 /* set a timer, to set background every interval time */
-                var timeId = window.setInterval("slideSetBackground(config.global_bg_res)", _bg_time);
+                // window.setInterval to call PamJS.function
+                var timeId = window.setInterval("PamJS.slideSetBackground(PamJS.config.global_bg_res)", _bg_time);
                 slideSetBackground(config.global_bg_res);
             }
         }
@@ -829,12 +833,16 @@
     }
 
     v = {
-        version: '2.0.0',
+        version: version,
+        config: config,
         init: init,
         _bg: _bg,
         _audio: _audio,
         _movie: _movie,
+        slideSetBackground: slideSetBackground
     }
 
     e.PamJS = e.Pam = e.P = v;
+    // For JSONP
+    e.pamjs = pamjs;
 })(window)
