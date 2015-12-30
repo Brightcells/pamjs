@@ -1,6 +1,9 @@
-*.pyc
 *.db
 *.swp
+*.pyc
+*.idea
+*.media
 *.sqlite3
-*media*
+*.DS_Store
+node_modules/
 local_settings.py
