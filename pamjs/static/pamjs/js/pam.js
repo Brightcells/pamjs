@@ -27,7 +27,7 @@
  * @date 2013/06/27
  * @e-mail qiminis0801@gmail.com
  * @github https://github.com/HQMIS
- * @version 1.0.1
+ * @version 2.0.0
  */
 
 !(function(e, t) {
